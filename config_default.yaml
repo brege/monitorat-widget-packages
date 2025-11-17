@@ -1,0 +1,6 @@
+widgets:
+  packages:
+    name: "System Packages"
+    collapsible: true
+    hidden: false
+    refresh_seconds: 5
