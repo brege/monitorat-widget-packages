@@ -1,6 +1,6 @@
 # monitor@packages Widget
 
-This widget was generated entirely by an AI agent from **prompt.md** and **AGENTS.md**. These files constitute the complete specification needed to build a functional monitor@ widget. 
+This widget was generated entirely by an AI agent from **`prompt.md`** and **`AGENTS.md`**. These files constitute the complete specification needed to build a functional [monitor@](https://github.com/brege/monitorat) widget.
 
 This widget provides the number of packages installed on Fedora Workstation that are tracked via:
 - `dnf`
@@ -12,8 +12,8 @@ It's not all that useful, but it is a good pilot because it spans the full stack
 
 It took codex 12 minutes to produce this widget through two prompts only.
 
-- [prompt-1 log][logs/codex-20251117-prompt-1.log]
-- [prompt-2 log][logs/codex-20251117-prompt-2.log]
+- [prompt-1 log](logs/codex-20251117-prompt-1.log)
+- [prompt-2 log](logs/codex-20251117-prompt-2.log)
 
 ## Setup
 
@@ -21,7 +21,7 @@ First, clone the repo itself and install:
 ```bash
 git clone https://github.com/brege/monitorat.git
 cd monitorat
-pip install .
+uv tool install -e .
 ```
 
 Configure `~/.config/monitor@/config.yaml` to point to the sandbox and enable the widget:
@@ -41,7 +41,7 @@ widgets:
 
 Start the server:
 ```bash
-gunicorn --bind localhost:6161 monitorat.monitor:app
+monitorat server
 ```
 
 Access the widget at `http://localhost:6161` and verify the API endpoint:
@@ -61,6 +61,9 @@ Once satisfied, move the widget to production:
 ```bash
 mv testing/widgets/packages ~/.config/monitor@/widgets/packages
 ```
+
+> [!NOTE]
+> "packages" is the *name* of the widget, not a bundle of widgets.
 
 Update `~/.config/monitor@/config.yaml` to point to the production location.
 
